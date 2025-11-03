@@ -14,6 +14,9 @@ public class TestCase {
     @NotBlank
     private String name;
 
+    // Optional: categorize cases by module/feature for dashboard stats
+    private String module;
+
     private String description;
     private String testSteps;
     private String expectedResults;
