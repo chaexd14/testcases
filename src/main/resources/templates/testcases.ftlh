@@ -1,4 +1,5 @@
 <#import "layout.ftlh" as ui>
+<link rel="stylesheet" href="/css/testcases.css">
 <@ui.page title="Test Cases" active="testcases">
   <div class="toolbar">
     <div class="h1">Test Cases</div>
@@ -33,8 +34,15 @@
                 </span>
               </td>
               <td class="text-right">
-                <a class="btn ghost" href="/testcases/edit/${tc.id}">Edit</a>
-                <a class="btn secondary" href="/testcases/delete/${tc.id}">Delete</a>
+                <div class="action-icons">
+  <a href="/testcases/edit/${tc.id}" class="icon-btn">
+    <img src="/images/edit_button.png" alt="Edit" class="icon edit-icon">
+  </a>
+  <a href="/testcases/delete/${tc.id}" class="icon-btn">
+    <img src="/images/delete_button.png" alt="Delete" class="icon delete-icon">
+  </a>
+</div>
+
               </td>
             </tr>
           </#list>
@@ -44,7 +52,7 @@
 
     <div class="card">
       <div class="h1">Test Case Statistics</div>
-      <div class="grid" style="margin-top:12px">
+      <div class="grid mt-12">
         <div class="stat">
           <div class="label">Total</div>
           <div class="value">${testcases?size}</div>
@@ -55,7 +63,7 @@
         </div>
         <div class="stat">
           <div class="label">Failed</div>
-          <div class="value" style="color:var(--danger)">${runsFailed!0}</div>
+          <div class="value text-danger">${runsFailed!0}</div>
         </div>
         <div class="stat">
           <div class="label">Not yet tested</div>

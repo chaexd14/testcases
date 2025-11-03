@@ -1,5 +1,7 @@
 <#import "layout.ftlh" as ui>
 <@ui.page title="Test Case" active="testcases">
+<link rel="stylesheet" href="/css/testcase_form.css">
+
   <div class="toolbar">
     <div class="h1">${(testcase.id)?has_content?then('Edit Test Case','Add Test Case')}</div>
     <a class="btn secondary" href="/testcases">Back</a>

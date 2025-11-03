@@ -9,10 +9,10 @@
     <!-- Left: Pie chart card only -->
     <div class="card">
       <div class="h1">Status distribution</div>
-<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; margin-top:20px; height:100%;">
-  <canvas id="statusPie" width="360" height="360" style="max-height:420px; max-width:420px;"></canvas>
-  <div id="legend-container" style="display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:12px;"></div>
-</div>
+      <div class="pie-box">
+        <canvas id="statusPie" width="360" height="360" class="pie-canvas"></canvas>
+        <div id="legend-container" class="legend-col"></div>
+      </div>
 
     </div>
 
@@ -20,7 +20,7 @@
     <div class="stack">
       <div class="card">
         <div class="h1">Total test cases</div>
-        <div class="stat" style="margin-top:12px">
+        <div class="stat mt-12">
           <div class="value">${totalCases!0}</div>
           <div class="label">Across all modules</div>
         </div>
@@ -31,7 +31,7 @@
         <#if topFailedModules?size == 0>
           <p class="subtitle">No failures recorded yet.</p>
         <#else>
-          <table class="table" style="margin-top:12px">
+          <table class="table mt-12">
             <thead>
               <tr>
                 <th>Module</th>
@@ -52,7 +52,7 @@
 
       <div class="card">
         <div class="h1">Last run date</div>
-        <div class="stat" style="margin-top:12px">
+        <div class="stat mt-12">
           <div class="value">${(lastRun)!"—"}</div>
           <div class="label">Most recent Test Run</div>
         </div>

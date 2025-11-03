@@ -1,0 +1,72 @@
+/* === Add Test Case Page Styles === */
+
+/* Center & resize the form card */
+.card {
+  width: 100%;                   /* take up most of the screen */
+  max-width: 1200px;             /* stops it from becoming too wide on big monitors */
+  margin: 6px auto 5px auto; /* balanced spacing on all sides */
+  padding: 50px 60px;           /* more internal spacing */
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* More space between input fields */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input, .textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.textarea {
+  min-height: 120px;
+}
+
+.form .actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+
+/* Hover effect for all buttons */
+.btn {
+  transition: all 0.25s ease-in-out;
+  text-decoration: none; /* remove underline for links like Back */
+}
+
+.btn:hover {
+  background: #fff;
+  color: var(--brand-600);
+  border: 1px solid var(--brand-600);
+  box-shadow: 0 0 10px rgba(152, 197, 171, 0.3);
+}
+
+/* Align Back button consistently */
+.toolbar a.btn {
+  text-decoration: none;
+}
+
+/* Smooth gradient background fade-in */
+body {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

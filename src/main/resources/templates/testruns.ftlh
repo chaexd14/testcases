@@ -1,13 +1,17 @@
 <#import "layout.ftlh" as ui>
 <@ui.page title="Test Runs" active="testruns">
+<link rel="stylesheet" href="/css/testruns.css">
+
   <div class="toolbar">
     <div class="h1">Run Test Case</div>
     <a class="btn secondary" href="/testcases">View Test Cases</a>
   </div>
 
   <div class="grid cols-2">
-    <div class="card">
-      <form class="form" action="/testruns" method="post">
+<div>
+   <form class="form form-container wide-form" action="/testruns" method="post">
+
+
         <div>
           <label class="subtitle">Select Test Case</label>
           <select class="select" name="testCaseId">

@@ -9,7 +9,7 @@
         <input class="input" type="text" placeholder="Username" />
         <input class="input" type="password" placeholder="Password" />
         <div class="actions">
-          <button type="submit" class="btn" style="width:100%">Log in</button>
+          <button type="submit" class="btn w-100">Log in</button>
         </div>
       </form>
       <p class="footer-note mt-12">Don't have an account? <a class="link" href="/dashboard">Continue as guest</a></p>

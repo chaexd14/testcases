@@ -1,0 +1,127 @@
+/* === Test Runs Page Styles === */
+
+/* Match badge styling from Test Cases */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.badge.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.badge.warn {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.badge.danger {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+
+/* Make left card fill more space */
+.grid.cols-2 {
+  grid-template-columns: 58% 38%;
+  gap: 24px;
+}
+
+.grid.cols-2 .card {
+  height: 100%;
+}
+
+/* Dropdown styling to fit theme */
+.select {
+  background: #fffef8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 14px;
+  padding-right: 36px;
+  font-size: 15px;
+  height: 60px;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(152, 197, 171, 0.25);
+}
+
+/* Remove underline from 'View Test Cases' link */
+.toolbar a.btn {
+  text-decoration: none;
+}
+
+/* Reverse hover fade for buttons */
+.btn {
+  transition: all 0.25s ease-in-out;
+}
+
+.btn:hover {
+  background: #fff;
+  color: var(--brand-600);
+  border: 1px solid var(--brand-600);
+  box-shadow: 0 0 10px rgba(152, 197, 171, 0.3);
+}
+
+/* === Refined Wide Form === */
+.grid.cols-2 > div:first-child {
+  background: linear-gradient(135deg, rgba(152,197,171,0.07), rgba(152,197,171,0));
+  border-radius: 16px;
+  padding: 24px 28px;
+}
+
+
+.wide-form {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 85%;
+}
+
+/* Give inner fields a subtle card feel */
+.wide-form .select,
+.wide-form .btn {
+  border-radius: 10px;
+}
+
+/* Better spacing & balance */
+.grid.cols-2 {
+  grid-template-columns: 58% 38%;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* Keep label & field alignment tight */
+.form-container label.subtitle {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}

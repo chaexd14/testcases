@@ -1,0 +1,128 @@
+/* Test Cases Page Specific Styles */
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.toolbar .btn {
+  text-decoration: none;
+}
+
+/* Table button alignment */
+.table td .btn {
+  margin-left: 6px;
+  text-decoration: none; /* remove underline */
+  display: inline-block;
+}
+
+/* Keep Edit and Delete buttons aligned properly */
+.table td a.btn {
+  vertical-align: middle;
+}
+
+/* Make buttons not overlap or squish */
+.table td .btn.ghost,
+.table td .btn.secondary {
+  min-width: 70px;
+  text-align: center;
+  padding: 6px 10px;
+}
+
+/* Hover fixes */
+.btn.ghost:hover,
+.btn.secondary:hover {
+  text-decoration: none;
+}
+
+/* Right column card alignment fix */
+.grid.cols-2 {
+  grid-template-columns: 62% 34%;
+  align-items: start;
+}
+
+/* Center layout cleaner */
+.card {
+  width: 100%;
+  text-decoration: none;
+}
+
+/* === Test Case Action Icons === */
+.action-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s ease-in-out;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Optional hover tint */
+.icon.edit-icon:hover {
+  filter: brightness(0) saturate(100%) invert(60%) sepia(19%) saturate(450%) hue-rotate(80deg) brightness(95%) contrast(90%);
+}
+
+.icon.delete-icon:hover {
+  filter: brightness(0) saturate(100%) invert(35%) sepia(96%) saturate(7473%) hue-rotate(356deg) brightness(95%) contrast(97%);
+}
+
+/* Uniform badge sizes for Test Cases table */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.badge.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.badge.warn {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.badge.danger {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+

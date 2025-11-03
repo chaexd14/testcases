@@ -17,11 +17,13 @@
 html,body{
     height:100%
 }
-body{
-  margin:0; 
+body {
+  margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text); background:linear-gradient(180deg,var(--bg), #e7eefc);
+  color: var(--text);
+  background-color: #B8C7E6;
 }
+
 .container {
     max-width:1200px;margin:0 auto;padding:24px;
 }
@@ -144,6 +146,8 @@ body{
 .text-right{text-align:right}
 .link{color:var(--brand-600); text-decoration:none}
 .link:hover{text-decoration:underline}
+.text-danger{color:var(--danger)}
+.w-100{width:100%}
 
 /* Make canvas responsive and limit height so it visually matches stacked cards */
 .card canvas {
