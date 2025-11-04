@@ -29,6 +29,8 @@
           <a href="/testruns" class="${(active=="testruns")?then("active","")}">Test Runs</a>
           <a href="/testcases/new" class="${(active=="addcase")?then("active","")}">Add Test Case</a>
           <a href="#" class="${(active=="settings")?then("active","")}">Settings</a>
+
+          <a href="/auth/signout/new">Sign Out</a>
         </nav>
   <div class="footer-note push-bottom">v0.1 • FreeMarker/Spring Boot</div>
       </aside>
