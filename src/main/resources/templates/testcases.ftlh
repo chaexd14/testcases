@@ -1,8 +1,11 @@
 <#import "layout.ftlh" as ui>
+<#import "searchbar.ftlh" as sb>
+
 <link rel="stylesheet" href="/css/testcases.css">
 <@ui.page title="Test Cases" active="testcases">
   <div class="toolbar">
     <div class="h1">Test Cases</div>
+    <@sb.searchBar actionUrl="/testcases" />
     <a class="btn" href="/testcases/new">Add Test Case</a>
   </div>
 
