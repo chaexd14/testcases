@@ -35,21 +35,4 @@ WHERE NOT EXISTS (
     WHERE t.test_case_id = tc.id AND t.status = tr.status
 );
 
--- ================================
--- account_db (idempotent)
--- ================================
-INSERT INTO account_db (fullname, username, email, password)
-SELECT tmp.fullname, tmp.username, tmp.email, tmp.password
-FROM (
-  SELECT 'Jumilyn Anne De Lima' AS fullname, 'jumilyn' AS username, 'jumilyn@example.com' AS email, 'password123' AS password
-  UNION ALL
-  SELECT 'Maria Santos', 'maria_s', 'maria@example.com', 'password456'
-  UNION ALL
-  SELECT 'Juan Dela Cruz', 'juan_dc', 'juan@example.com', 'password789'
-  UNION ALL
-  SELECT 'Anna Lopez', 'anna_lopez', 'anna@example.com', 'password000'
-) AS tmp
-WHERE NOT EXISTS (
-  SELECT 1 FROM account_db a WHERE a.email = tmp.email
-);
 
