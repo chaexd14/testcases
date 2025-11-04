@@ -27,15 +27,24 @@ public class TestCaseController {
     }
 
     @GetMapping
-    public String list(Model model) {
-        List<TestCase> cases = service.findAll();
-        model.addAttribute("testcases", cases);
+    public String list(@RequestParam(name = "q", required = false) String query, Model model) {
+        List<TestCase> cases;
 
-    // Aggregate latest run status per test case (best-effort)
-    // Use String keys to make it easy to access from FreeMarker without ?api
-    Map<String, String> lastStatus = new HashMap<>();
+        // If a search query is present, filter results; otherwise load all
+        if (query != null && !query.trim().isEmpty()) {
+            cases = service.search(query.trim());
+        } else {
+            cases = service.findAll();
+        }
+        model.addAttribute("testcases", cases);
+        model.addAttribute("q", query); // so Freemarker remembers the search term
+
+        // Aggregate latest run status per test case (best-effort)
+        Map<String, String> lastStatus = new HashMap<>();
         EnumMap<TestRun.Status, Integer> counts = new EnumMap<>(TestRun.Status.class);
-        for (TestRun.Status s : TestRun.Status.values()) counts.put(s, 0);
+        for (TestRun.Status s : TestRun.Status.values())
+            counts.put(s, 0);
+
         for (TestRun run : runService.findAll()) {
             if (run.getTestCase() != null && run.getTestCase().getId() != null) {
                 lastStatus.put(String.valueOf(run.getTestCase().getId()), String.valueOf(run.getStatus()));
@@ -44,10 +53,12 @@ public class TestCaseController {
                 counts.put(run.getStatus(), counts.get(run.getStatus()) + 1);
             }
         }
+
         model.addAttribute("lastStatusByCaseId", lastStatus);
         model.addAttribute("runsPassed", counts.get(TestRun.Status.PASSED));
         model.addAttribute("runsFailed", counts.get(TestRun.Status.FAILED));
         model.addAttribute("runsNotTested", counts.get(TestRun.Status.NOT_TESTED));
+
         return "testcases";
     }
 

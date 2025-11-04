@@ -18,11 +18,21 @@ public class TestCaseService {
         this.runRepo = runRepo;
     }
 
-    public List<TestCase> findAll() { return repo.findAll(); }
+    public List<TestCase> findAll() {
+        return repo.findAll();
+    }
 
-    public TestCase findById(Long id) { return repo.findById(id).orElse(null); }
+    public List<TestCase> search(String keyword) {
+        return repo.search(keyword);
+    }
 
-    public TestCase save(TestCase testCase) { return repo.save(testCase); }
+    public TestCase findById(Long id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    public TestCase save(TestCase testCase) {
+        return repo.save(testCase);
+    }
 
     // Ensure child rows are deleted first to avoid FK constraint violations
     @Transactional
