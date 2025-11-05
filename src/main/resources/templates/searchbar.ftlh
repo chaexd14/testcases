@@ -7,6 +7,8 @@
       placeholder="${placeholder}"
       class="search-input"
     >
-    <button type="submit" class="btn search-btn">Search</button>
+    <button type="submit" class="btn search-btn icon-only" aria-label="Search">
+      <img src="/images/search_button.png" alt="" class="icon" />
+    </button>
   </form>
 </#macro>

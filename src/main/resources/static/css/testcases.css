@@ -97,6 +97,10 @@
   filter: brightness(0) saturate(100%) invert(35%) sepia(96%) saturate(7473%) hue-rotate(356deg) brightness(95%) contrast(97%);
 }
 
+.icon.info-icon:hover {
+  filter: brightness(0) saturate(100%) invert(55%) sepia(10%) saturate(626%) hue-rotate(93deg) brightness(96%) contrast(89%);
+}
+
 /* Uniform badge sizes for Test Cases table */
 .badge {
   display: inline-flex;
@@ -132,4 +136,27 @@
   color: #991b1b;
   border-color: #fecaca;
 }
+
+/* Make table rows clickable */
+.table tbody tr.tc-row { cursor: pointer; }
+.table tbody tr.tc-row:hover { background: #f3f4f6; }
+
+/* Details panel styling */
+.details-panel .details { display: flex; flex-direction: column; gap: 14px; }
+.details-panel .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.details-panel .row.block { flex-direction: column; align-items: stretch; }
+.details-panel .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.details-panel .value { font-weight: 700; }
+.details-panel .block-text { margin: 6px 0 0; white-space: pre-wrap; }
+.details-panel .block-pre { margin: 6px 0 0; padding: 10px 12px; background: #fff; border: 1px solid var(--border); border-radius: 10px; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.details-panel .empty-note { color: var(--muted); font-size: 14px; }
+
+/* Search bar branding */
+.search-bar { display: flex; align-items: center; gap: 8px; }
+.search-bar .search-input { 
+  padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: #fff; outline: none; transition: border .15s, box-shadow .15s; min-width: 260px;
+}
+.search-bar .search-input:focus { border-color: var(--brand-600); box-shadow: 0 0 0 4px rgba(152, 197, 171, 0.25); }
+.search-bar .search-btn.icon-only { display: inline-flex; align-items: center; justify-content: center; padding: 8px 10px; }
+.search-bar .search-btn.icon-only .icon { width: 18px; height: 18px; display: block; }
 

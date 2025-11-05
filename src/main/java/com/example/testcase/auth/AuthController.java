@@ -40,7 +40,7 @@ public class AuthController {
     }
 
     @GetMapping("/signout/new")
-    public String signout(HttpSession session) {
+    public String signout(HttpSession session) { // i added session based login, just in case, if needed to protect the route, just pass the (HttpSession session)
         session.invalidate();
         return "redirect:/";
     }

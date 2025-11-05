@@ -127,11 +127,24 @@ body {
 
 /* Forms */
 .form{display:flex; flex-direction:column; gap:14px}
+/* Brand-wide form controls: clean, borderless look; inherit table font */
 .input, .select, .textarea{
-  width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#fff; outline:none; transition:border .15s, box-shadow .15s;
+  width:100%;
+  padding:10px 0; /* remove boxy padding on sides */
+  border:0;
+  border-bottom:1px solid var(--border);
+  border-radius:0;
+  background:transparent;
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease;
+  font-family: inherit;
+  color: var(--text);
 }
 .textarea{min-height:96px; resize:vertical}
-.input:focus, .select:focus, .textarea:focus{border-color:#93c5fd; box-shadow:0 0 0 4px #dbeafe}
+.input:focus, .select:focus, .textarea:focus{
+  border-bottom-color: var(--brand-600);
+  box-shadow: 0 4px 0 0 rgba(152,197,171,0.25);
+}
 .form .actions{display:flex; gap:10px; justify-content:flex-end}
 
 /* Auth */
