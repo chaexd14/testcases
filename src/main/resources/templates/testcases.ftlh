@@ -4,10 +4,13 @@
 <link rel="stylesheet" href="/css/testcases.css">
 <@ui.page title="Test Cases" active="testcases">
   <div class="toolbar">
-    <div class="h1">Test Cases</div>
-    <@sb.searchBar actionUrl="/testcases" />
+  <div class="h1">Test Cases</div>
+  <@sb.searchBar actionUrl="/testcases" />
+  <div class="toolbar-actions">
+    <a class="btn secondary" href="/testcases/export/csv<#if q??>?q=${q?url}</#if>">Export CSV</a>
     <a class="btn" href="/testcases/new">Add Test Case</a>
   </div>
+</div>
 
   <div class="grid cols-2">
     <div>

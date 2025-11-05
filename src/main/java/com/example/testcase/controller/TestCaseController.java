@@ -5,11 +5,27 @@ import com.example.testcase.entity.TestRun;
 import com.example.testcase.service.TestCaseService;
 import com.example.testcase.service.TestRunService;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
@@ -91,4 +107,68 @@ public class TestCaseController {
         }
         return "redirect:/testcases";
     }
+
+    @GetMapping("/export/csv")
+    public ResponseEntity<byte[]> exportCsv(@RequestParam(name = "q", required = false) String query) {
+        List<TestCase> cases;
+
+        if (query != null && !query.trim().isEmpty()) {
+            cases = service.search(query.trim());
+        } else {
+            cases = service.findAll();
+        }
+
+        Map<Long, String> statusMap = new HashMap<>();
+        for (TestRun run : runService.findAll()) {
+            if (run.getTestCase() != null && run.getTestCase().getId() != null) {
+                statusMap.put(run.getTestCase().getId(), String.valueOf(run.getStatus()));
+            }
+        }
+
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            PrintWriter writer = new PrintWriter(new OutputStreamWriter(baos, StandardCharsets.UTF_8));
+
+            writer.println("ID,Title,Module,Description,Test Steps,Expected Results,Status");
+
+            for (TestCase tc : cases) {
+                String status = statusMap.getOrDefault(tc.getId(), "NOT_TESTED");
+                writer.println(String.format("%s,%s,%s,%s,%s,%s,%s",
+                        escapeCsv(String.valueOf(tc.getId())),
+                        escapeCsv(tc.getName()),
+                        escapeCsv(tc.getModule()),
+                        escapeCsv(tc.getDescription()),
+                        escapeCsv(tc.getTestSteps()),
+                        escapeCsv(tc.getExpectedResults()),
+                        escapeCsv(status)));
+            }
+
+            writer.flush();
+            writer.close();
+
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+            String filename = "test_cases_" + timestamp + ".csv";
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("text/csv"));
+            headers.setContentDispositionFormData("attachment", filename);
+
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(baos.toByteArray());
+
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    private String escapeCsv(String value) {
+        if (value == null)
+            return "";
+        if (value.contains(",") || value.contains("\"") || value.contains("\n") || value.contains("\r")) {
+            return "\"" + value.replace("\"", "\"\"") + "\"";
+        }
+        return value;
+    }
+
 }

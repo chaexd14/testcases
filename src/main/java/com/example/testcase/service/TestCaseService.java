@@ -3,6 +3,8 @@ package com.example.testcase.service;
 import com.example.testcase.entity.TestCase;
 import com.example.testcase.repository.TestCaseRepository;
 import com.example.testcase.repository.TestRunRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +42,12 @@ public class TestCaseService {
         // Remove dependent test runs, then the test case
         runRepo.deleteByTestCase_Id(id);
         repo.deleteById(id);
+    }
+
+    @Autowired
+    private TestCaseRepository testCaseRepository;
+
+    public List<TestCase> getAllTestCases() {
+        return testCaseRepository.findAll();
     }
 }
